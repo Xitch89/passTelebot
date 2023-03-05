@@ -50,13 +50,14 @@ def generate_password(message):
         # Generate the password
         random.seed(0)
         password_list = []
+        punctuation_chars = "/\@!#$%^&()}{><][?" #перелік знаків пунктуації
         for i in range(pass_len):
             if i == 0:  # first character - uppercase letter
                 password_list.append(random.choice(foundation1).upper())
             elif i == pass_len - 2:  # second to last character - number
                 password_list.append(random.choice(string.digits))
             elif i == pass_len - 1:  # last character - symbol
-                password_list.append(random.choice(string.punctuation))
+                password_list.append(random.choice(punctuation_chars))
             elif i % 2 == 0:
                 password_list.append(random.choice(foundation1))
             else:
