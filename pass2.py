@@ -20,7 +20,10 @@ def generate_password(message):
     if stage == 0:
         # Get the first set of characters
         if len(message.text) > 100:
-            bot.reply_to(message, "Набір символів не може бути довшим за 100 символів. Будь ласка, спробуйте ще раз.")
+            bot.reply_to(message, "Набір символів не може бути довшим за 100 символів. Будь ласка, спробуйте ще раз")
+            return
+        elif len(message.text) < 3:
+            bot.reply_to(message, "Набір символів занадто короткий. Будь ласка, спробуйте ще раз")
             return
         foundation1 = message.text
         # Move to the next stage of password generation
@@ -31,6 +34,9 @@ def generate_password(message):
         # Get the second set of characters
         if len(message.text) > 100:
             bot.reply_to(message, "Набір символів не може бути довшим за 100 символів. Будь ласка, спробуйте ще раз.")
+            return
+        elif len(message.text) < 3:
+            bot.reply_to(message, "Набір символів занадто короткий. Будь ласка, спробуйте ще раз")
             return
         foundation2 = message.text
         # Move to the next stage of password generation
@@ -46,6 +52,9 @@ def generate_password(message):
             return
         if pass_len > 100:
             bot.reply_to(message, "Довжина паролю не може бути більше 100 символів. Будь ласка, спробуйте ще раз.")
+            return
+        if pass_len < 3:
+            bot.reply_to(message, "Довжина паролю занадто коротка, оберіть довший пароль")
             return
         # Generate the password
         random.seed(0)
